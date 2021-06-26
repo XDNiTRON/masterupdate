@@ -13,7 +13,7 @@ def countNode(update, context):
     args = update.message.text.split(" ", maxsplit=1)
     if len(args) > 1:
         link = args[1]
-        msg = sendMessage(f"Counting: <code>{link}</code>", context.bot, update)
+        msg = sendMessage(f"🧩 COUNTING 🧩 <code>{link}</code>", context.bot, update)
         gd = GoogleDriveHelper()
         result = gd.count(link)
         deleteMessage(context.bot, msg)
@@ -22,10 +22,10 @@ def countNode(update, context):
         else:
             uname = f'<a href="tg://user?id={update.message.from_user.id}">{update.message.from_user.first_name}</a>'
         if uname is not None:
-            cc = f'\n\ncc: {uname}'
+            cc = f'\n\n🗃CountedBy : {uname}'
         sendMessage(result + cc, context.bot, update)
     else:
-        sendMessage("Provide G-Drive Shareable Link to Count.", context.bot, update)
+        sendMessage("Provide G-Drive Shareable Link to Count 😏", context.bot, update)
 
 count_handler = CommandHandler(BotCommands.CountCommand, countNode, filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
 dispatcher.add_handler(count_handler)
