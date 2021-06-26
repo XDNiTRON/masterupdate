@@ -24,12 +24,12 @@ BRANCH_ = UPSTREAM_BRANCH
 
 @app.on_message(filters.command(BotCommands.UpdateCommand) & filters.user(OWNER_ID))
 async def update_it(client, message):
-    msg_ = await message.reply_text("`Updating Please Wait!`")
+    msg_ = await message.reply_text("`♻️ Updating Please Wait. . . . ⚠️`")
     try:
         repo = Repo()
     except GitCommandError:
         return await msg_.edit(
-            "**Invalid Git Command. Please Report This Bug To [Support Group](https://t.me/SlamMirrorSupport)**"
+            "**Invalid Git Command. Please Report This Bug To [OWNER](https://t.me/ANonYmoUS_FriEND)**"
         )
     except InvalidGitRepositoryError:
         repo = Repo.init()
@@ -57,7 +57,7 @@ async def update_it(client, message):
         except GitCommandError:
             repo.git.reset("--hard", "FETCH_HEAD")
         await runcmd("pip3 install --no-cache-dir -r requirements.txt")
-        await msg_.edit("`Updated Sucessfully! Give Me Some Time To Restart!`")
+        await msg_.edit("`Updated Sucessfully 😇 Give Me Some Time To Restart 😒`")
         with open("./aria.sh", 'rb') as file:
             script = file.read()
         subprocess.call("./aria.sh", shell=True)
@@ -66,7 +66,7 @@ async def update_it(client, message):
         exit()
         return
     else:
-        await msg_.edit("`Heroku Detected! Pushing, Please wait!`")
+        await msg_.edit("`Heroku Detected 🖱 Pushing 🤯, Please wait.....⚠️`")
         ups_rem.fetch(UPSTREAM_BRANCH)
         repo.git.reset("--hard", "FETCH_HEAD")
         if "heroku" in repo.remotes:
@@ -77,6 +77,6 @@ async def update_it(client, message):
         try:
             remote.push(refspec="HEAD:refs/heads/master", force=True)
         except BaseException as error:
-            await msg_.edit(f"**Updater Error** \nTraceBack : `{error}`")
+            await msg_.edit(f"**Updater Error 🤧** \n➤ TraceBack : `{error}`")
             return repo.__del__()
-        await msg_.edit(f"`Updated Sucessfully! \n\nCheck your config with` `/{BotCommands.ConfigMenuCommand}`")
+        await msg_.edit(f"`Updated Sucessfully 😇 \n\n➤ Check your config with` `/{BotCommands.ConfigMenuCommand}`")
