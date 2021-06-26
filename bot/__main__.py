@@ -35,41 +35,51 @@ def stats(update, context):
     cpuUsage = psutil.cpu_percent(interval=0.5)
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage('/').percent
-    stats = f'<b>Bot Uptime:</b> {currentTime}\n' \
-            f'<b>Start Time:</b> {current}\n' \
-            f'<b>Total Disk Space:</b> {total}\n' \
-            f'<b>Used:</b> {used}  ' \
-            f'<b>Free:</b> {free}\n\n' \
-            f'📊Data Usage📊\n<b>Upload:</b> {sent}\n' \
-            f'<b>Download:</b> {recv}\n\n' \
-            f'<b>CPU:</b> {cpuUsage}%\n' \
-            f'<b>RAM:</b> {memory}%\n' \
-            f'<b>DISK:</b> {disk}%'
+    stats = f'<b>〓══〓 🎖BOT STATiSTiCS🎖 〓══〓</b>\n\n' \
+            f'<b>╭━⏱BotUptime:</b> {currentTime}\n' \
+            f'<b>│</b>\n' \
+            f'<b>╰⏰StartTime:</b> {current}\n\n' \
+            f'<b>〓══〓 🛸 DISK USGE 🛸 〓══〓</b>\n\n' \
+            f'<b>╭━🧰TotalDiskSpace:</b> {total}\n' \
+            f'<b>│</b>\n' \
+            f'<b>├━📮Used:</b> {used}\n' \
+            f'<b>│</b>\n' \
+            f'<b>╰━🏮Free:</b> {free}\n\n' \
+            f'〓══〓 🕹 DATA USAGE 🕹 〓══〓\n\n<b>╭━🔺Upload:</b> {sent}\n' \
+            f'<b>│</b>\n' \
+            f'<b>├━🔻Download:</b> {recv}\n' \
+            f'<b>│</b>\n' \
+            f'<b>├━📟CPU:</b> {cpuUsage}%\n' \
+            f'<b>│</b>\n' \
+            f'<b>├━💾RAM:</b> {memory}%\n' \
+            f'<b>│</b>\n' \
+            f'<b>╰━💿DISK:</b> {disk}%\n\n' \
+            f'<b>〓═〓 @ANonYmoUS_FriEND 〓═〓</b>'
     update.effective_message.reply_photo(IMAGE_URL, stats, parse_mode=ParseMode.HTML)
 
 
 def start(update, context):
     start_string = f'''
-This bot can mirror all your links to Google Drive!
-Type /{BotCommands.HelpCommand} to get a list of available commands
+This bot can mirror all your links to Google Drive 🪀
+Type /{BotCommands.HelpCommand} to get a list of available commands 🍺
 '''
     buttons = button_build.ButtonMaker()
-    buttons.buildbutton("Repo", "https://github.com/breakdowns/slam-mirrorbot")
-    buttons.buildbutton("Support Group", "https://t.me/SlamMirrorSupport")
+    buttons.buildbutton("🧪 REPO 🧪", "https://t.me/ANonYmoUS_FriEND")
+    buttons.buildbutton("🧰 OWNER 🧰", "https://t.me/ANonYmoUS_FriEND")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     LOGGER.info('UID: {} - UN: {} - MSG: {}'.format(update.message.chat.id, update.message.chat.username, update.message.text))
     uptime = get_readable_time((time.time() - botStartTime))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         if update.message.chat.type == "private" :
-            sendMessage(f"Hey I'm Alive 🙂\nSince: <code>{uptime}</code>", context.bot, update)
+            sendMessage(f"Hey I'm Alive 🙂 \nBy @ANonYmoUS_FriEND \n🦾 Since: <code>{uptime}</code> \n Engine Aria2 ⚡", context.bot, update)
         else :
             update.effective_message.reply_photo(IMAGE_URL, start_string, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
     else :
-        sendMessage(f"Oops! not a Authorized user.", context.bot, update)
+        sendMessage(f"Oops❗️ You are not Authorized to use me 😐", context.bot, update)
 
 
 def restart(update, context):
-    restart_message = sendMessage("Restarting, Please wait!", context.bot, update)
+    restart_message = sendMessage("🤯 Restarting........⚠️ Please wait 🧤", context.bot, update)
     # Save restart message object in order to reply to it after restarting
     with open(".restartmsg", "w") as f:
         f.truncate(0)
@@ -80,9 +90,9 @@ def restart(update, context):
 
 def ping(update, context):
     start_time = int(round(time.time() * 1000))
-    reply = sendMessage("Starting Ping", context.bot, update)
+    reply = sendMessage("Starting Ping....🖲️", context.bot, update)
     end_time = int(round(time.time() * 1000))
-    editMessage(f'{end_time - start_time} ms', reply)
+    editMessage(f'🏓 Pong! {end_time - start_time} ms', reply)
 
 
 def log(update, context):
@@ -103,7 +113,7 @@ def bot_help(update, context):
 
 /{BotCommands.CountCommand}: Count file/folder of Google Drive Links
 
-/{BotCommands.DeleteCommand} [link]: Delete file from Google Drive (Only Owner & Sudo)
+/{BotCommands.DeleteCommand} [link]: Delete file from Google Drive (Only Owner)
 
 /{BotCommands.WatchCommand} [youtube-dl supported link]: Mirror through youtube-dl. Click /{BotCommands.WatchCommand} for more help.
 
@@ -133,7 +143,7 @@ def bot_help(update, context):
 
 /{BotCommands.UpdateCommand}: Update Bot from Upstream Repo. (Owner Only).
 
-/{BotCommands.UsageCommand}: To see Heroku Dyno Stats (Owner & Sudo only).
+/{BotCommands.UsageCommand}: To see Heroku Dyno Stats (Owner Only).
 
 /{BotCommands.SpeedCommand}: Check Internet Speed of the Host
 
