@@ -18,7 +18,7 @@ def authorize(update, context):
         if chat_id not in AUTHORIZED_CHATS:
             msg = DbManger().db_auth(chat_id)
         else:
-            msg = 'User already authorized'
+            msg = 'User Already Authorized 🙄'
     else:
         if reply_message is None:
             # Trying to authorize a chat
@@ -26,7 +26,7 @@ def authorize(update, context):
             if chat_id not in AUTHORIZED_CHATS:
                 msg = DbManger().db_auth(chat_id)
             else:
-                msg = 'Already authorized chat'
+                msg = 'Already Authorized Chat 🙄'
 
         else:
             # Trying to authorize someone in specific
@@ -34,7 +34,7 @@ def authorize(update, context):
             if user_id not in AUTHORIZED_CHATS:
                 msg = DbManger().db_auth(user_id)
             else:
-                msg = 'User already authorized'
+                msg = 'User Already Authorized 🙄'
     sendMessage(msg, context.bot, update)
 
 
@@ -48,7 +48,7 @@ def unauthorize(update, context):
         if chat_id in AUTHORIZED_CHATS:
             msg = DbManger().db_unauth(chat_id)
         else:
-            msg = 'User already unauthorized'
+            msg = 'User Already Unauthorized 🙄'
     else:
         if reply_message is None:
             # Trying to unauthorize a chat
@@ -56,14 +56,14 @@ def unauthorize(update, context):
             if chat_id in AUTHORIZED_CHATS:
                 msg = DbManger().db_unauth(chat_id)
             else:
-                msg = 'Already unauthorized chat'
+                msg = 'Already Unauthorized Chat 🙄'
         else:
             # Trying to authorize someone in specific
             user_id = reply_message.from_user.id
             if user_id in AUTHORIZED_CHATS:
                 msg = DbManger().db_unauth(user_id)
             else:
-                msg = 'User already unauthorized'
+                msg = 'User Already Unauthorized 🙄'
     sendMessage(msg, context.bot, update)
 
 
@@ -77,17 +77,17 @@ def addSudo(update, context):
         if chat_id not in SUDO_USERS:
             msg = DbManger().db_addsudo(chat_id)
         else:
-            msg = 'Already Sudo'
+            msg = 'Already Sudo 🙄'
     else:
         if reply_message is None:
-            msg = "Give ID or Reply To message of whom you want to Promote"
+            msg = "Give ID or Reply To message of whom you want to Promote 🤷‍♂️"
         else:
             # Trying to authorize someone in specific
             user_id = reply_message.from_user.id
             if user_id not in SUDO_USERS:
                 msg = DbManger().db_addsudo(user_id)
             else:
-                msg = 'Already Sudo'
+                msg = 'Already Sudo 🙄'
     sendMessage(msg, context.bot, update)
 
 
@@ -101,16 +101,16 @@ def removeSudo(update, context):
         if chat_id in SUDO_USERS:
             msg = DbManger().db_rmsudo(chat_id)
         else:
-            msg = 'Not a Sudo'
+            msg = 'Not A Sudo 😐'
     else:
         if reply_message is None:
-            msg = "Give ID or Reply To message of whom you want to remove from Sudo"
+            msg = "Give ID or Reply To message of whom you want to remove from Sudo 🤷‍♂️"
         else:
             user_id = reply_message.from_user.id
             if user_id in SUDO_USERS:
                 msg = DbManger().db_rmsudo(user_id)
             else:
-                msg = 'Not a Sudo'
+                msg = 'Not A Sudo 😐'
     sendMessage(msg, context.bot, update)
 
 
@@ -118,7 +118,7 @@ def sendAuthChats(update, context):
     user = sudo = ''
     user += '\n'.join(str(id) for id in AUTHORIZED_CHATS)
     sudo += '\n'.join(str(id) for id in SUDO_USERS)
-    sendMessage(f'<b><u>Authorized Chats</u></b>\n{user}\n<b><u>Sudo Users</u></b>\n{sudo}', context.bot, update)
+    sendMessage(f'<b><u>💭 Authorized Chats 💭</u></b>\n{user}\n<b><u>🥷 Sudo Users 🥷</u></b>\n{sudo}', context.bot, update)
 
 
 send_auth_handler = CommandHandler(command=BotCommands.AuthorizedUsersCommand, callback=sendAuthChats,
