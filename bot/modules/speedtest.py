@@ -8,7 +8,7 @@ from telegram.ext import Filters, CommandHandler
 
 def speedtest(update, context):
     message = update.effective_message
-    ed_msg = message.reply_text("Running Speed Test . . . ")
+    ed_msg = message.reply_text("🏃‍♂💨 Running Speed Test . . . . . . . ")
     test = Speedtest()
     test.get_best_server()
     test.download()
@@ -17,17 +17,25 @@ def speedtest(update, context):
     result = test.results.dict()
     path = (result['share'])
     string_speed = f'''
-<b>Server</b>
-<b>Name:</b> <code>{result['server']['name']}</code>
-<b>Country:</b> <code>{result['server']['country']}, {result['server']['cc']}</code>
-<b>Sponsor:</b> <code>{result['server']['sponsor']}</code>
-<b>Latency:</b> <code>{result['server']['latency']}</code>
+<b>〓═〓 SERVER ENGINE ARIA2 〓═〓</b>
 
-<b>SpeedTest Results</b>
-<b>Upload:</b> <code>{speed_convert(result['upload'] / 8)}</code>
-<b>Download:</b>  <code>{speed_convert(result['download'] / 8)}</code>
-<b>Ping:</b> <code>{result['ping']} ms</code>
-<b>ISP:</b> <code>{result['client']['isp']}</code>
+<b>╭━📡Name :</b> <code>{result['server']['name']}</code>
+<b>│</b>
+<b>├━🕹Country :</b> <code>{result['server']['country']}, {result['server']['cc']}</code>
+<b>│</b>
+<b>├━🛸Latency :</b> <code>{result['server']['latency']}</code>
+<b>│</b>
+<b>╰━💶Sponsor :</b> <code>{result['server']['sponsor']}</code>
+
+<b>〓═〓 SPEED TEST RESULTS 〓═〓</b>
+
+<b>╭━🔺Upload:</b> <code>{speed_convert(result['upload'] / 8)}</code>
+<b>│</b>
+<b>├━🔻:</b>  <code>{speed_convert(result['download'] / 8)}</code>
+<b>│</b>
+<b>├━🖲Ping:</b> <code>{result['ping']} ms</code>
+<b>│</b>
+<b>╰━🏬ISP:</b> <code>{result['client']['isp']}</code>
 '''
     ed_msg.delete()
     try:
