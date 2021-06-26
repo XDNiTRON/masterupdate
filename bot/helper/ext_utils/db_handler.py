@@ -28,7 +28,7 @@ class DbManger:
             self.conn.commit()
             self.disconnect()
             AUTHORIZED_CHATS.add(chat_id)
-            return 'Authorized successfully'
+            return 'Authorized Successfully 😉'
 
     def db_unauth(self,chat_id: int):
         self.connect()
@@ -42,7 +42,7 @@ class DbManger:
             AUTHORIZED_CHATS.remove(chat_id)
             if chat_id in SUDO_USERS:
                 SUDO_USERS.remove(chat_id)
-            return 'Unauthorized successfully'
+            return 'Unauthorized Successfully 😒'
 
     def db_addsudo(self,chat_id: int):
         self.connect()
@@ -55,7 +55,7 @@ class DbManger:
                 self.conn.commit()
                 self.disconnect()
                 SUDO_USERS.add(chat_id)
-                return 'Successfully promoted as Sudo'
+                return 'Successfully Promoted As Sudo 🤗'
             else:
                 sql = 'INSERT INTO users VALUES ({},TRUE);'.format(chat_id)
                 self.cur.execute(sql)
@@ -63,7 +63,7 @@ class DbManger:
                 self.disconnect()
                 AUTHORIZED_CHATS.add(chat_id)
                 SUDO_USERS.add(chat_id)
-                return 'Successfully Authorized and promoted as Sudo'
+                return 'Successfully Authorized And Promoted As Sudo 🤗'
 
     def db_rmsudo(self,chat_id: int):
         self.connect()
@@ -75,4 +75,4 @@ class DbManger:
             self.conn.commit()
             self.disconnect()
             SUDO_USERS.remove(chat_id)
-            return 'Successfully removed from Sudo'
+            return 'Successfully Removed From Sudo 😒'
