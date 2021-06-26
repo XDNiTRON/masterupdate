@@ -125,7 +125,7 @@ def bot_help(update, context):
 
 /{BotCommands.ListCommand} [search term]: Searches the search term in the Google Drive, if found replies with the link
 
-/{BotCommands.StatsCommand}: Show Stats of the machine the bot is hosted on
+/{BotCommands.StatsCommand}: Show Statics of the machine the bot is hosted on
 
 /{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
 
@@ -177,7 +177,7 @@ def bot_help(update, context):
 
 /{BotCommands.ListCommand} [search term]: Searches the search term in the Google Drive, if found replies with the link
 
-/{BotCommands.StatsCommand}: Show Stats of the machine the bot is hosted on
+/{BotCommands.StatsCommand}: Show Statics of the machine the bot is hosted on
 
 /{BotCommands.SpeedCommand}: Check Internet Speed of the Host
 
@@ -205,7 +205,7 @@ BotCommand(f'{BotCommands.CancelAllCommand}','Cancel all tasks'),
 BotCommand(f'{BotCommands.DeleteCommand}','Delete file from Drive'),
 BotCommand(f'{BotCommands.ListCommand}',' [query] Searches files in Drive'),
 BotCommand(f'{BotCommands.StatusCommand}','Get Mirror Status message'),
-BotCommand(f'{BotCommands.StatsCommand}','Bot Usage Stats'),
+BotCommand(f'{BotCommands.StatsCommand}','Bot Usage Statics'),
 BotCommand(f'{BotCommands.HelpCommand}','Get Detailed Help'),
 BotCommand(f'{BotCommands.MediaInfoCommand}','Get detailed info about replied media'),
 BotCommand(f'{BotCommands.SpeedCommand}','Check Speed of the host'),
@@ -219,7 +219,7 @@ def main():
     if os.path.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        bot.edit_message_text("Restarted successfully!", chat_id, msg_id)
+        bot.edit_message_text("Restarted successfully 😇", chat_id, msg_id)
         os.remove(".restartmsg")
     bot.set_my_commands(botcmds)
 
