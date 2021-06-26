@@ -119,7 +119,7 @@ class MegaAppListener(MegaListener):
 
     def cancel_download(self):
         self.is_cancelled = True
-        self.listener.onDownloadError("Download Canceled by user")
+        self.listener.onDownloadError("Download Cancelled By User 🥺❗️")
 
 
 class AsyncExecutor:
@@ -165,7 +165,7 @@ class MegaDownloadHelper:
         if mega_listener.error is not None:
             return listener.onDownloadError(str(mega_listener.error))
         if STOP_DUPLICATE_MEGA or MEGA_LIMIT is not None:
-            msg = sendMessage('Checking Your Link...', listener.bot, listener.update)
+            msg = sendMessage('♻️ Checking Your Link.....', listener.bot, listener.update)
         if STOP_DUPLICATE_MEGA:
             LOGGER.info(f'Checking File/Folder if already in Drive')
             mname = node.getName()
@@ -178,7 +178,7 @@ class MegaDownloadHelper:
                 smsg, button = gd.drive_list(mname)
             if smsg:
                 deleteMessage(listener.bot, msg)
-                msg1 = "File/Folder is already available in Drive.\nHere are the search results:"
+                msg1 = "File/Folder is already available in Drive 😡\nHere are the search results 🥶"
                 sendMarkup(msg1, listener.bot, listener.update, button)
                 return
             else:
@@ -190,7 +190,7 @@ class MegaDownloadHelper:
             limit = MEGA_LIMIT
             limit = limit.split(' ', maxsplit=1)
             limitint = int(limit[0])
-            msg3 = f'Failed, Mega limit is {MEGA_LIMIT}.\nYour File/Folder size is {get_readable_file_size(api.getSize(node))}.'
+            msg3 = f'Failed, Mega limit is ➤{MEGA_LIMIT}.\nYour File/Folder size is ➤{get_readable_file_size(api.getSize(node))}.'
             if 'GB' in limit or 'gb' in limit:
                 if api.getSize(node) > limitint * 1024**3:
                     deleteMessage(listener.bot, msg)
