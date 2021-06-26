@@ -57,7 +57,7 @@ async def update_it(client, message):
         except GitCommandError:
             repo.git.reset("--hard", "FETCH_HEAD")
         await runcmd("pip3 install --no-cache-dir -r requirements.txt")
-        await msg_.edit("`Updated Sucessfully 😇 Give Me Some Time To Restart 😒`")
+        await msg_.edit("`Engine Aria2 Updated Sucessfully ⚡ Give Me Some Time To Restart 😒`")
         with open("./aria.sh", 'rb') as file:
             script = file.read()
         subprocess.call("./aria.sh", shell=True)
@@ -79,4 +79,4 @@ async def update_it(client, message):
         except BaseException as error:
             await msg_.edit(f"**Updater Error 🤧** \n➤ TraceBack : `{error}`")
             return repo.__del__()
-        await msg_.edit(f"`Updated Sucessfully 😇 \n\n➤ Check your config with` `/{BotCommands.ConfigMenuCommand}`")
+        await msg_.edit(f"`Engine Aria2 Updated Sucessfully ⚡ \n\n➤ Check your config with` `/{BotCommands.ConfigMenuCommand}`")
