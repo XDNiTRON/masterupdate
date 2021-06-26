@@ -34,8 +34,8 @@ class AriaDownloadHelper(DownloadHelper):
                     smsg, button = gdrive.drive_list(sname)
                 if smsg:
                     aria2.remove([download])
-                    dl.getListener().onDownloadError(f'File/Folder is already available in Drive.\n\n')
-                    sendMarkup("Here are the search results:", dl.getListener().bot, dl.getListener().update, button)
+                    dl.getListener().onDownloadError(f'File/Folder is already available in Drive 😡\n\n')
+                    sendMarkup("Here are the search results 🥶", dl.getListener().bot, dl.getListener().update, button)
                     return
 
             if TORRENT_DIRECT_LIMIT is not None:
@@ -80,7 +80,7 @@ class AriaDownloadHelper(DownloadHelper):
         sleep(0.5)
         dl = getDownloadByGid(gid)
         if dl: 
-            dl.getListener().onDownloadError('Dead torrent!')
+            dl.getListener().onDownloadError('Dead Torrent/Magnet 😂❗️')
 
     @new_thread
     def __onDownloadError(self, api, gid):
