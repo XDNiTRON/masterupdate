@@ -49,11 +49,11 @@ async def return_search(query, page=1, sukebei=False):
                 if splitted.scheme == 'magnet' and splitted.query:
                     link = f'<code>{link}</code>'
                 newtext = f'''<b>{a + 1}.</b> <code>{html.escape(i["title"])}</code>
-<b>Link:</b> <code>{link}</code>
-<b>Size:</b> <code>{i["nyaa_size"]}</code>
-<b>Seeders:</b> <code>{i["nyaa_seeders"]}</code>
-<b>Leechers:</b> <code>{i["nyaa_leechers"]}</code>
-<b>Category:</b> <code>{i["nyaa_category"]}</code>\n\n'''
+<b>📎Link:</b> <code>{link}</code>
+<b>🧰Size:</b> <code>{i["nyaa_size"]}</code>
+<b>🧲Seeders:</b> <code>{i["nyaa_seeders"]}</code>
+<b>🛰️Leechers:</b> <code>{i["nyaa_leechers"]}</code>
+<b>✳️Category:</b> <code>{i["nyaa_category"]}</code>\n\n'''
                 futtext = text + newtext
                 if (a and not a % 10) or len((await parser.parse(futtext))['message']) > 4096:
                     results.append(text)
@@ -88,7 +88,7 @@ async def nyaa_search_sukebei(client, message):
 async def init_search(client, message, query, sukebei):
     result, pages, ttl = await return_search(query, sukebei=sukebei)
     if not result:
-        await message.reply_text('No results found')
+        await message.reply_text('No Results Found 🚫')
     else:
         buttons = [InlineKeyboardButton(f'1/{pages}', 'nyaa_nop'), InlineKeyboardButton(f'Next', 'nyaa_next')]
         if pages == 1:
@@ -224,7 +224,7 @@ class TorrentSearch:
             return
 
         query = urlencode(message.text.split(None, 1)[1])
-        self.message = await message.reply_text("Searching")
+        self.message = await message.reply_text("♻️ Searching. . . . .")
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.get(f"{self.source}/{query}") as resp:
@@ -236,7 +236,7 @@ class TorrentSearch:
                     self.response = result
                     self.response_range = range(0, len(self.response), self.RESULT_LIMIT)
         except:
-            await self.message.edit("No Results Found.")
+            await self.message.edit("No Results Found 🚫")
             return
         await self.update_message()
 
@@ -257,42 +257,42 @@ class TorrentSearch:
         await self.update_message()
 
 RESULT_STR_1337 = (
-    "➲Name: `{Name}`\n"
-    "➲Size: {Size}\n"
-    "➲Seeders: {Seeders} || ➲Leechers: {Leechers}"
+    "➤Name: `{Name}`\n"
+    "➤Size: {Size}\n"
+    "➤Seeders: {Seeders} || ➤Leechers: {Leechers}"
 )
 RESULT_STR_PIRATEBAY = (
-    "➲Name: `{Name}`\n"
-    "➲Size: {Size}\n"
-    "➲Seeders: {Seeders} || ➲Leechers: {Leechers}"
+    "➤Name: `{Name}`\n"
+    "➤Size: {Size}\n"
+    "➤Seeders: {Seeders} || ➤Leechers: {Leechers}"
 )
 RESULT_STR_TGX = (
-    "➲Name: `{Name}`\n" 
-    "➲Size: {Size}\n"
-    "➲Seeders: {Seeders} || ➲Leechers: {Leechers}"
+    "➤Name: `{Name}`\n" 
+    "➤Size: {Size}\n"
+    "➤Seeders: {Seeders} || ➤Leechers: {Leechers}"
 )
 RESULT_STR_YTS = (
-    "➲Name: `{Name}`"
+    "➤Name: `{Name}`"
 )
 RESULT_STR_EZTV = (
-    "➲Name: `{Name}`\n"
-    "➲Size: {Size}\n"
-    "➲Seeders: {Seeders}"
+    "➤Name: `{Name}`\n"
+    "➤Size: {Size}\n"
+    "➤Seeders: {Seeders}"
 )
 RESULT_STR_TORLOCK = (
-    "➲Name: `{Name}`\n"
-    "➲Size: {Size}\n"
-    "➲Seeders: {Seeders} || ➲Leechers: {Leechers}"
+    "➤Name: `{Name}`\n"
+    "➤Size: {Size}\n"
+    "➤Seeders: {Seeders} || ➤Leechers: {Leechers}"
 )
 RESULT_STR_RARBG = (
-    "➲Name: `{Name}`\n"
-    "➲Size: {Size}\n"
-    "➲Seeders: {Seeders} || ➲Leechers: {Leechers}"
+    "➤Name: `{Name}`\n"
+    "➤Size: {Size}\n"
+    "➤Seeders: {Seeders} || ➤Leechers: {Leechers}"
 )
 RESULT_STR_ALL = (
-    "➲Name: `{Name}`\n"
-    "➲Size: {Size}\n"
-    "➲Seeders: {Seeders} || ➲Leechers: {Leechers}"
+    "➤Name: `{Name}`\n"
+    "➤Size: {Size}\n"
+    "➤Seeders: {Seeders} || ➤Leechers: {Leechers}"
 )
 
 torrents_dict = {
@@ -312,16 +312,16 @@ for command, value in torrents_dict.items():
 
 def searchhelp(update, context):
     help_string = '''
-• /nyaa <i>[search query]</i>
-• /sukebei <i>[search query]</i>
-• /1337x <i>[search query]</i>
-• /piratebay <i>[search query]</i>
-• /tgx <i>[search query]</i>
-• /yts <i>[search query]</i>
-• /eztv <i>[search query]</i>
-• /torlock <i>[search query]</i>
-• /rarbg <i>[search query]</i>
-• /ts <i>[search query]</i>
+➣ /nyaa <i>[search query]</i>
+➣ /sukebei <i>[search query]</i>
+➣ /1337x <i>[search query]</i>
+➣ /piratebay <i>[search query]</i>
+➣ /tgx <i>[search query]</i>
+➣ /yts <i>[search query]</i>
+➣ /eztv <i>[search query]</i>
+➣ /torlock <i>[search query]</i>
+➣ /rarbg <i>[search query]</i>
+➣ /ts <i>[search query]</i>
 '''
     update.effective_message.reply_photo(IMAGE_URL, help_string, parse_mode=ParseMode.HTML)
     
