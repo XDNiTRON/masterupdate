@@ -14,12 +14,12 @@ URL_REGEX = r"(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-?=%.]+"
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "UpLoading.....📤"
-    STATUS_DOWNLOADING = "DownLoading.....📥"
-    STATUS_WAITING = "Queued.....📝"
+    STATUS_UPLOADING = "UpLoading......📤"
+    STATUS_DOWNLOADING = "DownLoading......📥"
+    STATUS_WAITING = "Queued......📝"
     STATUS_FAILED = "Failed 🚫. Cleaning Download..."
-    STATUS_ARCHIVING = "Archiving.....🔐"
-    STATUS_EXTRACTING = "Extracting.....🗳"
+    STATUS_ARCHIVING = "Archiving......🔐"
+    STATUS_EXTRACTING = "Extracting......🗳"
 
 
 PROGRESS_MAX_SIZE = 100 // 8
@@ -111,11 +111,11 @@ def get_readable_message():
                 # if hasattr(download, 'is_torrent'):
                 try:
                     msg += f"\n\n<b>╭• 🧲 Seeders :</b> {download.aria_download().num_seeders}" \
-                        f" | <b>╰• 🛰 Peers :</b> {download.aria_download().connections}"
+                        f"\n<b>╰• 🛰 Peers :</b> {download.aria_download().connections}"
                 except:
                     pass
             if download.status() == MirrorStatus.STATUS_DOWNLOADING:
-                msg += f"\n\n<b>💥ToStop ➤:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                msg += f"\n\n<b>💥ToStop ➤ </b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
             msg += "\n\n"
         return msg
 
