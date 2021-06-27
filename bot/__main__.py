@@ -36,24 +36,24 @@ def stats(update, context):
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage('/').percent
     stats = f'<b>〓══〓 🎖BOT STATiSTiCS🎖 〓══〓</b>\n\n' \
-            f'<b>╭━⏱BotUptime:</b> {currentTime}\n' \
+            f'<b>╭━⏱ AliveTime :</b> {currentTime}\n' \
             f'<b>│</b>\n' \
-            f'<b>╰⏰StartTime:</b> {current}\n\n' \
+            f'<b>╰━⏰ Uptime :</b> {current}\n\n' \
             f'<b>〓══〓 🛸 DISK USGE 🛸 〓══〓</b>\n\n' \
-            f'<b>╭━🧰TotalDiskSpace:</b> {total}\n' \
+            f'<b>╭━🧰 TotalDiskSpace :</b> {total}\n' \
             f'<b>│</b>\n' \
-            f'<b>├━📮Used:</b> {used}\n' \
+            f'<b>├━📮 Used :</b> {used}\n' \
             f'<b>│</b>\n' \
-            f'<b>╰━🏮Free:</b> {free}\n\n' \
-            f'〓══〓 🕹 DATA USAGE 🕹 〓══〓\n\n<b>╭━🔺Upload:</b> {sent}\n' \
+            f'<b>╰━🏮 Free :</b> {free}\n\n' \
+            f'〓══〓 🕹 DATA USAGE 🕹 〓══〓\n\n<b>╭━🔺 Upload :</b> {sent}\n' \
             f'<b>│</b>\n' \
-            f'<b>├━🔻Download:</b> {recv}\n' \
+            f'<b>├━🔻 Download :</b> {recv}\n' \
             f'<b>│</b>\n' \
-            f'<b>├━📟CPU:</b> {cpuUsage}%\n' \
+            f'<b>├━📟 CPU :</b> {cpuUsage}%\n' \
             f'<b>│</b>\n' \
-            f'<b>├━💾RAM:</b> {memory}%\n' \
+            f'<b>├━💾 RAM :</b> {memory}%\n' \
             f'<b>│</b>\n' \
-            f'<b>╰━💿DISK:</b> {disk}%\n\n' \
+            f'<b>╰━💿 DISK :</b> {disk}%\n\n' \
             f'<b>〓═〓 @ANonYmoUS_FriEND 〓═〓</b>'
     update.effective_message.reply_photo(IMAGE_URL, stats, parse_mode=ParseMode.HTML)
 
@@ -90,9 +90,9 @@ def restart(update, context):
 
 def ping(update, context):
     start_time = int(round(time.time() * 1000))
-    reply = sendMessage("Starting Ping....🖲️", context.bot, update)
+    reply = sendMessage("Starting Ping. . . .🖲️", context.bot, update)
     end_time = int(round(time.time() * 1000))
-    editMessage(f'🏓 Pong! {end_time - start_time} ms', reply)
+    editMessage(f'<b>🏓 Pong!</b>\n{end_time - start_time} ms', reply)
 
 
 def log(update, context):
