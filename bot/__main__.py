@@ -193,6 +193,8 @@ def bot_help(update, context):
 
 
 botcmds = [
+BotCommand(f'{BotCommands.StartCommand}', 'Start Bot'),
+BotCommand(f'{BotCommands.PingCommand}', 'Pong ms'),
 BotCommand(f'{BotCommands.MirrorCommand}', 'Start Mirroring'),
 BotCommand(f'{BotCommands.TarMirrorCommand}','Upload tar (zipped) file'),
 BotCommand(f'{BotCommands.UnzipMirrorCommand}','Extract files'),
@@ -209,8 +211,9 @@ BotCommand(f'{BotCommands.StatsCommand}','Bot Usage Statics'),
 BotCommand(f'{BotCommands.HelpCommand}','Get Detailed Help'),
 BotCommand(f'{BotCommands.MediaInfoCommand}','Get detailed info about replied media'),
 BotCommand(f'{BotCommands.SpeedCommand}','Check Speed of the host'),
-BotCommand(f'{BotCommands.LogCommand}','Bot Log [owner/sudo only]'),
-BotCommand(f'{BotCommands.RestartCommand}','Restart bot [owner/sudo only]')]
+BotCommand(f'{BotCommands.LogCommand}','Bot Log [Owner only]'),
+BotCommand(f'{BotCommands.RestartCommand}','Restart bot [Owner only]',)
+BotCommand(f'{BotCommands.UpdateCommand}', 'Update Latest Version'),]
 
 
 def main():
