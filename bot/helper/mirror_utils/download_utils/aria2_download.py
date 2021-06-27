@@ -48,12 +48,12 @@ class AriaDownloadHelper(DownloadHelper):
                 if 'GB' in limit or 'gb' in limit:
                     if size > limitint * 1024**3:
                         aria2.remove([download])
-                        dl.getListener().onDownloadError(f'Torrent/Direct limit is {TORRENT_DIRECT_LIMIT}.\nYour File/Folder size is {get_readable_file_size(size)}')
+                        dl.getListener().onDownloadError(f'Torrent/Direct limit is ➤ {TORRENT_DIRECT_LIMIT}.\nYour File/Folder size is ➤ {get_readable_file_size(size)}')
                         return
                 elif 'TB' in limit or 'tb' in limit:
                     if size > limitint * 1024**4:
                         aria2.remove([download])
-                        dl.getListener().onDownloadError(f'Torrent/Direct limit is {TORRENT_DIRECT_LIMIT}.\nYour File/Folder size is {get_readable_file_size(size)}')
+                        dl.getListener().onDownloadError(f'Torrent/Direct limit is ➤ {TORRENT_DIRECT_LIMIT}.\nYour File/Folder size is ➤ {get_readable_file_size(size)}')
                         return
         update_all_messages()
 
