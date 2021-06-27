@@ -71,7 +71,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands 🍺
     uptime = get_readable_time((time.time() - botStartTime))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         if update.message.chat.type == "private" :
-            sendMessage(f"Hey I'm Alive 🙂 \nBy @ANonYmoUS_FriEND \n🦾 Since: <code>{uptime}</code> \n Engine Aria2 ⚡", context.bot, update)
+            sendMessage(f"Hey I'm Alive 🙂 \nBy @ANonYmoUS_FriEND \n🦾 Since: <code>{uptime}</code> \n\n Engine Aria2 ⚡", context.bot, update)
         else :
             update.effective_message.reply_photo(IMAGE_URL, start_string, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
     else :
