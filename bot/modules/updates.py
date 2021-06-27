@@ -24,7 +24,7 @@ BRANCH_ = UPSTREAM_BRANCH
 
 @app.on_message(filters.command(BotCommands.UpdateCommand) & filters.user(OWNER_ID))
 async def update_it(client, message):
-    msg_ = await message.reply_text("`♻️ Updating Please Wait. . . . ⚠️`")
+    msg_ = await message.reply_text("`♻️ Updating Please Wait . . . . ⚠️`")
     try:
         repo = Repo()
     except GitCommandError:
@@ -66,7 +66,7 @@ async def update_it(client, message):
         exit()
         return
     else:
-        await msg_.edit("`Heroku Detected 🖱 Pushing 🤯, Please wait.....⚠️`")
+        await msg_.edit("`Heroku Detected 🖱 \nPushing 🤯, \nPlease wait. . . . . .⚠️`")
         ups_rem.fetch(UPSTREAM_BRANCH)
         repo.git.reset("--hard", "FETCH_HEAD")
         if "heroku" in repo.remotes:
