@@ -19,23 +19,23 @@ def speedtest(update, context):
     string_speed = f'''
 <b>〓═〓 SERVER ENGINE ARIA2 〓═〓</b>
 
-<b>╭━📡Name :</b> <code>{result['server']['name']}</code>
+<b>╭━📡 Name :</b> <code>{result['server']['name']}</code>
 <b>│</b>
-<b>├━🕹Country :</b> <code>{result['server']['country']}, {result['server']['cc']}</code>
+<b>├━🕹 Country :</b> <code>{result['server']['country']}, {result['server']['cc']}</code>
 <b>│</b>
-<b>├━🛸Latency :</b> <code>{result['server']['latency']}</code>
+<b>├━🛸 Latency :</b> <code>{result['server']['latency']}</code>
 <b>│</b>
-<b>╰━💶Sponsor :</b> <code>{result['server']['sponsor']}</code>
+<b>╰━💶 Sponsor :</b> <code>{result['server']['sponsor']}</code>
 
 <b>〓═〓 SPEED TEST RESULTS 〓═〓</b>
 
-<b>╭━🔺Upload:</b> <code>{speed_convert(result['upload'] / 8)}</code>
+<b>╭━🔺 Upload :</b> <code>{speed_convert(result['upload'] / 8)}</code>
 <b>│</b>
-<b>├━🔻:</b>  <code>{speed_convert(result['download'] / 8)}</code>
+<b>├━🔻 Download :</b>  <code>{speed_convert(result['download'] / 8)}</code>
 <b>│</b>
-<b>├━🖲Ping:</b> <code>{result['ping']} ms</code>
+<b>├━🖲 Ping :</b> <code>{result['ping']} ms</code>
 <b>│</b>
-<b>╰━🏬ISP:</b> <code>{result['client']['isp']}</code>
+<b>╰━🏬 ISP :</b> <code>{result['client']['isp']}</code>
 '''
     ed_msg.delete()
     try:
