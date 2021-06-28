@@ -20,7 +20,7 @@ from .helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper import button_build
 from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clone, watch, shell, eval, search, delete, speedtest, usage, mediainfo, count, config, updates
 
-now=datetime.now(pytz.timezone('Asia/Jakarta'))
+now=datetime.now(pytz.timezone('Asia/Kolkata'))
 
 
 def stats(update, context):
