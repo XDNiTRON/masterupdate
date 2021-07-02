@@ -193,7 +193,7 @@ try:
     TAR_UNZIP_LIMIT = getConfig('TAR_UNZIP_LIMIT')
     if len(TAR_UNZIP_LIMIT) == 0:
         TAR_UNZIP_LIMIT = None
-    except KeyError:
+except KeyError:
         TAR_UNZIP_LIMIT = None
 try:
     BUTTON_FOUR_NAME = getConfig('BUTTON_FOUR_NAME')
