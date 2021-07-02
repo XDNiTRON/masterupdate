@@ -29,7 +29,7 @@ def cloneNode(update, context):
                 limit = CLONE_LIMIT
                 limit = limit.split(' ', maxsplit=1)
                 limitint = int(limit[0])
-                msg2 = f'Failed, Copy limit is ➤ {CLONE_LIMIT}.\nYour File/Folder size is ➤ {get_readable_file_size(clonesize)}.'
+                msg2 = f'Failed 🚫 \nCopy limit is ➤ {CLONE_LIMIT}.\nYour File/Folder size is ➤ {get_readable_file_size(clonesize)}.'
                 if 'G' in limit[1] or 'g' in limit[1]:
                     if clonesize > limitint * 1024**3:
                         sendMessage(msg2, context.bot, update)
