@@ -133,7 +133,7 @@ class MirrorListener(listeners.MirrorListeners):
             uname = f"@{self.message.from_user.username}"
         else:
             uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
-        msg = f"{uname} your download has been stopped 🤥 \n\nDue to ➤ {error}"
+        msg = f"{uname} Your download has been stopped 🤥 \n\nDue to ➤ {error}"
         sendMessage(msg, self.bot, self.update)
         if count == 0:
             self.clean()
@@ -281,7 +281,7 @@ def _mirror(bot, update, isTar=False, extract=False):
     else:
         tag = None
     if not bot_utils.is_url(link) and not bot_utils.is_magnet(link):
-        sendMessage('No download source provided', bot, update)
+        sendMessage('No download source provided 🤨', bot, update)
         return
 
     try:
@@ -310,7 +310,7 @@ def _mirror(bot, update, isTar=False, extract=False):
             limit = TAR_UNZIP_LIMIT
             limit = limit.split(' ', maxsplit=1)
             limitint = int(limit[0])
-            msg = f'Failed, Tar/Unzip limit is ➤ {TAR_UNZIP_LIMIT}.\nYour File/Folder size is ➤ {get_readable_file_size(size)}.'
+            msg = f'Failed 🚫 \nTar/Unzip limit is ➤ {TAR_UNZIP_LIMIT}.\nYour File/Folder size is ➤ {get_readable_file_size(size)}.'
             if 'G' in limit[1] or 'g' in limit[1]:
                 if size > limitint * 1024**3:
                     sendMessage(msg, listener.bot, listener.update)
