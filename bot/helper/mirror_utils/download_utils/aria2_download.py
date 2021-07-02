@@ -34,8 +34,8 @@ class AriaDownloadHelper(DownloadHelper):
                     smsg, button = gdrive.drive_list(sname)
                 if smsg:
                     aria2.remove([download])
-                    dl.getListener().onDownloadError(f'File/Folder is already available in Drive.\n\n')
-                    sendMarkup("Here are the search results:", dl.getListener().bot, dl.getListener().update, button)
+                    dl.getListener().onDownloadError(f'File/Folder is already available in Drive 😡\n\n')
+                    sendMarkup("Here are the search results 🥶", dl.getListener().bot, dl.getListener().update, button)
                     return
 
             if TORRENT_DIRECT_LIMIT is not None or TAR_UNZIP_LIMIT is not None:
@@ -43,11 +43,11 @@ class AriaDownloadHelper(DownloadHelper):
                 if TAR_UNZIP_LIMIT is not None and (self.listener.isTar or self.listener.extract):
                     LOGGER.info(f"Checking File/Folder Size...")
                     limit = TAR_UNZIP_LIMIT
-                    mssg = f'Tar/Unzip limit is {TAR_UNZIP_LIMIT}'
+                    mssg = f'Tar/Unzip limit is ➤ {TAR_UNZIP_LIMIT}'
                 elif TORRENT_DIRECT_LIMIT is not None and limit is None:
                     LOGGER.info(f"Checking File/Folder Size...")
                     limit = TORRENT_DIRECT_LIMIT
-                    mssg = f'Torrent/Direct limit is {TORRENT_DIRECT_LIMIT}'
+                    mssg = f'Torrent/Direct limit is ➤ {TORRENT_DIRECT_LIMIT}'
                 if limit is not None:
                     sleep(1.5)
                     size = aria2.get_download(gid).total_length
@@ -56,12 +56,12 @@ class AriaDownloadHelper(DownloadHelper):
                     if 'G' in limit[1] or 'g' in limit[1]:
                         if size > limitint * 1024**3:
                             aria2.remove([download])
-                            dl.getListener().onDownloadError(f'{mssg}.\nYour File/Folder size is {get_readable_file_size(size)}')
+                            dl.getListener().onDownloadError(f'{mssg}.\nYour File/Folder size is ➤ {get_readable_file_size(size)}')
                             return
                     elif 'T' in limit[1] or 't' in limit[1]:
                         if size > limitint * 1024**4:
                             aria2.remove([download])
-                            dl.getListener().onDownloadError(f'{mssg}.\nYour File/Folder size is {get_readable_file_size(size)}')
+                            dl.getListener().onDownloadError(f'{mssg}.\nYour File/Folder size is ➤ {get_readable_file_size(size)}')
                             return
         update_all_messages()
 
@@ -88,7 +88,7 @@ class AriaDownloadHelper(DownloadHelper):
         sleep(0.5)
         dl = getDownloadByGid(gid)
         if dl: 
-            dl.getListener().onDownloadError('Dead torrent!')
+            dl.getListener().onDownloadError('Dead Torrent/Magnet 😂❗️')
 
     @new_thread
     def __onDownloadError(self, api, gid):
