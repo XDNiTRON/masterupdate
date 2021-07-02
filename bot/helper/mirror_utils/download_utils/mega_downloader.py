@@ -6,7 +6,7 @@ import os
 from bot.helper.ext_utils.bot_utils import new_thread, get_mega_link_type, get_readable_file_size
 from bot.helper.mirror_utils.status_utils.mega_download_status import MegaDownloadStatus
 from bot.helper.mirror_utils.upload_utils.gdriveTools import GoogleDriveHelper
-from bot import MEGA_LIMIT, STOP_DUPLICATE_MEGA
+from bot import MEGA_LIMIT, STOP_DUPLICATE_MEGA, TAR_UNZIP_LIMIT
 import random
 import string
 
@@ -185,20 +185,26 @@ class MegaDownloadHelper:
                 if MEGA_LIMIT is None:
                     deleteMessage(listener.bot, msg)
 
-        if MEGA_LIMIT is not None:
+        if MEGA_LIMIT is not None or TAR_UNZIP_LIMIT is not None:
+            limit = None
             LOGGER.info(f'Checking File/Folder Size')
-            limit = MEGA_LIMIT
-            limit = limit.split(' ', maxsplit=1)
-            limitint = int(limit[0])
-            msg3 = f'Failed, Mega limit is ➤{MEGA_LIMIT}.\nYour File/Folder size is ➤{get_readable_file_size(api.getSize(node))}.'
-            if 'GB' in limit or 'gb' in limit:
+            if TAR_UNZIP_LIMIT is not None and (listener.isTar or listener.extract):
+                limit = TAR_UNZIP_LIMIT
+                msg3 = f'Failed, Tar/Unzip limit is {TAR_UNZIP_LIMIT}.\nYour File/Folder size is {get_readable_file_size(api.getSize(node))}.'
+            elif MEGA_LIMIT is not None and limit is None:
+                limit = MEGA_LIMIT
+                msg3 = f'Failed, Mega limit is {MEGA_LIMIT}.\nYour File/Folder size is {get_readable_file_size(api.getSize(node))}.'
+             if limit is not None:
+                 limit = limit.split(' ', maxsplit=1)
+                 limitint = int(limit[0])
+            if 'G' in limit[1] or 'g' in limit[1]:
                 if api.getSize(node) > limitint * 1024**3:
                     deleteMessage(listener.bot, msg)
                     sendMessage(msg3, listener.bot, listener.update)
                     return
                 else:
                     deleteMessage(listener.bot, msg)
-            elif 'TB' in limit or 'tb' in limit:
+            elif 'T' in limit[1] or 't' in limit[1]:
                 if api.getSize(node) > limitint * 1024**4:
                     deleteMessage(listener.bot, msg)
                     sendMessage(msg3, listener.bot, listener.update)
