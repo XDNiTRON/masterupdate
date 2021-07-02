@@ -183,10 +183,10 @@ class MegaDownloadHelper:
             LOGGER.info(f'Checking File/Folder Size')
             if TAR_UNZIP_LIMIT is not None and (listener.isTar or listener.extract):
                 limit = TAR_UNZIP_LIMIT
-                msg3 = f'Failed, Tar/Unzip limit is ➤ {TAR_UNZIP_LIMIT}.\nYour File/Folder size is ➤ {get_readable_file_size(api.getSize(node))}.'
+                msg3 = f'Failed 🚫 \nTar/Unzip limit is ➤ {TAR_UNZIP_LIMIT}.\nYour File/Folder size is ➤ {get_readable_file_size(api.getSize(node))}.'
             elif MEGA_LIMIT is not None and limit is None:
                 limit = MEGA_LIMIT
-                msg3 = f'Failed, Mega limit is ➤ {MEGA_LIMIT}.\nYour File/Folder size is ➤ {get_readable_file_size(api.getSize(node))}.'
+                msg3 = f'Failed 🚫 \nMega limit is ➤ {MEGA_LIMIT}.\nYour File/Folder size is ➤ {get_readable_file_size(api.getSize(node))}.'
             if limit is not None:
                 limit = limit.split(' ', maxsplit=1)
                 limitint = int(limit[0])
