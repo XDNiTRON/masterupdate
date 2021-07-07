@@ -35,10 +35,10 @@ def speedtest(update, context):
 <b>│</b>
 <b>├━🖲 Ping :</b> <code>{result['ping']} ms</code>
 <b>│</b>
-<b>├━🏬 ISP Rating :</b> <code>{result['client']['isprating']}</code>
+<b>├━📊 ISP Rating :</b> <code>{result['client']['isprating']}</code>
 <b>│</b>
 <b>╰━🛸 Latency :</b> <code>{result['server']['latency']}</code>
-📤 Sent: {(result['bytes_sent'])}
+
 '''
 
     ed_msg.delete()
