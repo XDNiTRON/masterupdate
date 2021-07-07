@@ -23,7 +23,7 @@ def speedtest(update, context):
 <b>│</b>
 <b>├━🕹 Country :</b> <code>{result['server']['country']}, {result['server']['cc']}</code>
 <b>│</b>
-<b>├━🏬 ISP:</b> <code>{result['client']['isp']}</code>
+<b>├━🏬 ISP :</b> <code>{result['client']['isp']}</code>
 <b>│</b>
 <b>╰━💶 Sponsor :</b> <code>{result['server']['sponsor']}</code>
 
@@ -35,7 +35,7 @@ def speedtest(update, context):
 <b>│</b>
 <b>├━🖲 Ping :</b> <code>{result['ping']} ms</code>
 <b>│</b>
-<b>├━🏬 ISP Rating:</b> <code>{result['client']['isprating']}</code>
+<b>├━🏬 ISP Rating :</b> <code>{result['client']['isprating']}</code>
 <b>│</b>
 <b>╰━🛸 Latency :</b> <code>{result['server']['latency']}</code>
 '''
