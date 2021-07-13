@@ -152,13 +152,14 @@ def bot_sys_stats():
     free = get_readable_file_size(free)
     used = get_readable_file_size(used)
     stats = f"""
+    
   〓══〓 🎖BOT STATiCS🎖 〓══〓
     
-╭━•⏱AliveTime : {currentTime}
+╭━•⏱ALIVEtime : {currentTime}
 │
-├━•🏮FreeDisk : {free}
+├━•🏮FREEdisk : {free}
 │
-├━•📮UsedDisk : {used}
+├━•📮USEDdisk : {used}
 │
 ├━•📟CPU : {cpu}%
 │
