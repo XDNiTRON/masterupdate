@@ -114,6 +114,7 @@ def get_readable_message():
                         f"\n<b>╰• 🛰 Peers :</b> {download.aria_download().connections}"
                 except:
                     pass
+                msg += f'\n<b>User:</b> <a href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a> (<code>{download.message.from_user.id}</code>)'
             if download.status() == MirrorStatus.STATUS_DOWNLOADING:
                 msg += f"\n\n<b>💥ToStop ➤ </b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
             msg += "\n\n"
