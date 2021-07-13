@@ -150,12 +150,19 @@ def bot_sys_stats():
     free = get_readable_file_size(free)
     used = get_readable_file_size(used)
     stats = f"""
-Bot Uptime: {currentTime}
-Free Disk: {free}
-Used Disk: {used}
-CPU: {cpu}%
-RAM: {mem}%
-DISK: {disk}%
+  〓══〓 🎖BOT STATiCS🎖 〓══〓
+    
+╭━•⏱AliveTime : {currentTime}
+│
+├━•🏮FreeDisk : {free}
+│
+├━•📮UsedDisk : {used}
+│
+├━•📟CPU : {cpu}%
+│
+├━•💾RAM: {mem}%
+│
+╰━•💿DISK: {disk}%
 """
     return stats
 
