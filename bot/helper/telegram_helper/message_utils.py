@@ -87,14 +87,14 @@ def update_all_messages():
                     uldl_bytes += float(speedy.split('M')[0]) * 1048576
         dlspeed = get_readable_file_size(dlspeed_bytes)
         ulspeed = get_readable_file_size(uldl_bytes)
-        msg += f"<b>DL:</b> {dlspeed}ps 🔻 | <b>UL:</b> {ulspeed}ps 🔺 \n<b>⏱ ALIVETIME :</b> {currentTime}"
+        msg += f"<b>╭━•🔻DL :</b> {dlspeed}ps \n<b>├━•🔺UL :</b> {ulspeed}ps \n<b>╰━•⏱ALIVEtime :</b> {currentTime}"
     with status_reply_dict_lock:
         for chat_id in list(status_reply_dict.keys()):
             if status_reply_dict[chat_id] and msg != status_reply_dict[chat_id].text:
                 if len(msg) == 0:
                     msg = "Starting DL"
                 try:
-                    keyboard = [[InlineKeyboardButton("♻️ Stats", callback_data="stats_")]]
+                    keyboard = [[InlineKeyboardButton("♻️ BOT STATiCS ♻️", callback_data="stats_")]]
                     editMessage(msg, status_reply_dict[chat_id], reply_markup=InlineKeyboardMarkup(keyboard))
                 except Exception as e:
                     LOGGER.error(str(e))
@@ -121,7 +121,7 @@ def sendStatusMessage(msg, bot):
                     uldl_bytes += float(speedy.split('M')[0]) * 1048576
         dlspeed = get_readable_file_size(dlspeed_bytes)
         ulspeed = get_readable_file_size(uldl_bytes)
-        progress += f"<b>DL:</b> {dlspeed}ps 🔻 | <b>UL:</b> {ulspeed}ps 🔺 \n<b>⏱ ALIVETIME :</b> {currentTime}"    
+        progress += f"<b>╭━•🔻DL :</b> {dlspeed}ps \n<b>├━•🔺UL :</b> {ulspeed}ps \n<b>╰━•⏱ALIVEtime :</b> {currentTime}"    
     with status_reply_dict_lock:
         if msg.message.chat.id in list(status_reply_dict.keys()):
             try:
