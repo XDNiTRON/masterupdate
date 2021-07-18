@@ -215,7 +215,7 @@ BotCommand(f'{BotCommands.RestartCommand}','Restart bot [Owner only]')]
 
 def main():
     # Heroku restarted
-    GROUP_ID = '-398341118 -1349417642'
+    GROUP_ID = '-398341118'
     kie = datetime.now(pytz.timezone('Asia/Kolkata'))
     jam = kie.strftime('%d/%m/%Y %I:%M%P')
     if GROUP_ID is not None and isinstance(GROUP_ID, str):
