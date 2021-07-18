@@ -35,7 +35,7 @@ def stats(update, context):
     cpuUsage = psutil.cpu_percent(interval=0.5)
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage('/').percent
-    stats = f'<b>〓══〓 🎖BOT STATiSTiCS🎖 〓══〓</b>\n\n' \
+    stats = f'<b>〓══〓 🎖BOT STATICS🎖 〓══〓</b>\n\n' \
             f'<b>╭━⏱ AliveTime :</b> {currentTime}\n' \
             f'<b>│</b>\n' \
             f'<b>╰━⏰ Uptime :</b> {current}\n\n' \
@@ -92,7 +92,7 @@ def ping(update, context):
     start_time = int(round(time.time() * 1000))
     reply = sendMessage("Starting Ping. . . .🖲️", context.bot, update)
     end_time = int(round(time.time() * 1000))
-    editMessage(f'<b>🏓 Pong!</b>\n{end_time - start_time} ms .  .  .🖲', reply)
+    editMessage(f'<b>🪀 Pong!</b>\n{end_time - start_time} ms .  .  .🖲', reply)
 
 
 def log(update, context):
@@ -214,6 +214,20 @@ BotCommand(f'{BotCommands.RestartCommand}','Restart bot [Owner only]')]
 
 
 def main():
+    # Heroku restarted
+    GROUP_ID = '-398341118 -1349417642'
+    kie = datetime.now(pytz.timezone('Asia/Kolkata'))
+    jam = kie.strftime('%d/%m/%Y %I:%M%P')
+    if GROUP_ID is not None and isinstance(GROUP_ID, str):
+        try:
+            dispatcher.bot.sendMessage(f"{GROUP_ID}", f"♻️ HEROKU GOT RESTARTED \n      {jam}")
+        except Unauthorized:
+            LOGGER.warning(
+                "Bot isnt able to send message to support_chat, go and check!"
+            )
+        except BadRequest as e:
+            LOGGER.warning(e.message)
+            
     fs_utils.start_cleanup()
     # Check if the bot is restarting
     if os.path.isfile(".restartmsg"):
